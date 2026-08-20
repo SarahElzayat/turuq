@@ -1,0 +1,144 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  /* Fallback stacks are explicit so a missing font variable degrades to a
+     system sans rather than the browser's default serif. */
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --font-heading: var(--font-heading), var(--font-sans), ui-sans-serif, system-ui,
+    sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* Blue-anchored palette. Neutrals carry a little blue chroma (hue ~250-260)
+   so grays read as cool slate rather than flat gray, with teal/indigo as the
+   supporting hues for charts. */
+:root {
+  --background: oklch(0.985 0.005 250);
+  --foreground: oklch(0.21 0.032 258);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.032 258);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.032 258);
+  --primary: oklch(0.54 0.185 258);
+  --primary-foreground: oklch(0.985 0.005 250);
+  --secondary: oklch(0.958 0.014 250);
+  --secondary-foreground: oklch(0.31 0.055 258);
+  --muted: oklch(0.962 0.012 250);
+  --muted-foreground: oklch(0.52 0.032 256);
+  --accent: oklch(0.935 0.032 250);
+  --accent-foreground: oklch(0.35 0.09 258);
+  --destructive: oklch(0.577 0.225 25);
+  --border: oklch(0.908 0.014 250);
+  --input: oklch(0.908 0.014 250);
+  --ring: oklch(0.62 0.16 258);
+  --chart-1: oklch(0.62 0.17 258);
+  --chart-2: oklch(0.68 0.125 215);
+  --chart-3: oklch(0.58 0.145 285);
+  --chart-4: oklch(0.72 0.115 195);
+  --chart-5: oklch(0.47 0.16 265);
+  --radius: 0.75rem;
+  --sidebar: oklch(0.972 0.011 250);
+  --sidebar-foreground: oklch(0.21 0.032 258);
+  --sidebar-primary: oklch(0.54 0.185 258);
+  --sidebar-primary-foreground: oklch(0.985 0.005 250);
+  --sidebar-accent: oklch(0.935 0.032 250);
+  --sidebar-accent-foreground: oklch(0.35 0.09 258);
+  --sidebar-border: oklch(0.908 0.014 250);
+  --sidebar-ring: oklch(0.62 0.16 258);
+}
+
+.dark {
+  --background: oklch(0.19 0.025 260);
+  --foreground: oklch(0.968 0.008 250);
+  --card: oklch(0.238 0.028 260);
+  --card-foreground: oklch(0.968 0.008 250);
+  --popover: oklch(0.238 0.028 260);
+  --popover-foreground: oklch(0.968 0.008 250);
+  --primary: oklch(0.7 0.15 255);
+  --primary-foreground: oklch(0.18 0.03 260);
+  --secondary: oklch(0.292 0.03 260);
+  --secondary-foreground: oklch(0.968 0.008 250);
+  --muted: oklch(0.292 0.03 260);
+  --muted-foreground: oklch(0.72 0.032 255);
+  --accent: oklch(0.335 0.045 260);
+  --accent-foreground: oklch(0.968 0.008 250);
+  --destructive: oklch(0.704 0.19 22);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.6 0.145 258);
+  --chart-1: oklch(0.7 0.15 258);
+  --chart-2: oklch(0.75 0.115 215);
+  --chart-3: oklch(0.67 0.14 285);
+  --chart-4: oklch(0.78 0.105 195);
+  --chart-5: oklch(0.58 0.16 265);
+  --sidebar: oklch(0.222 0.028 260);
+  --sidebar-foreground: oklch(0.968 0.008 250);
+  --sidebar-primary: oklch(0.7 0.15 255);
+  --sidebar-primary-foreground: oklch(0.18 0.03 260);
+  --sidebar-accent: oklch(0.335 0.045 260);
+  --sidebar-accent-foreground: oklch(0.968 0.008 250);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.6 0.145 258);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+  /* Headings pick up the softer display face; shadcn's CardTitle/SheetTitle
+     already apply font-heading themselves. */
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+}
