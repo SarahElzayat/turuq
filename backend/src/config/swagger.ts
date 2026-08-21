@@ -10,7 +10,14 @@ export const swaggerSpec = swaggerJsdoc({
       description:
         "Backend Technical Assessment — Task 1: JWT-protected CRUD API for User Profiles.",
     },
-    servers: [{ url: `http://localhost:${env.PORT}` }],
+    servers: [
+      {
+        url:
+          process.env.API_URL || `http://localhost:${process.env.PORT || 4000}`,
+        description:
+          process.env.NODE_ENV === "production" ? "Production" : "Development",
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {
